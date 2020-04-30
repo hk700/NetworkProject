@@ -25,7 +25,7 @@ class projectTopo( Mininet ):
 
         #Establishing the links from hosts to routers
         info( "Creating links\n" )
-        self.addLink( s1, r1, intfName2='s1-eth0')
+        self.addLink( s1, r1, intfName2='r1-eth0')
         self.addLink( r1, r2, intfName1='r1-eth1', intfName2='r2-eth0')
         self.addLink( r1, r3, intfName1='r1-eth2', intfName2='r3-eth0')
         self.addLink( r2, r3, intfName1='r2-eth1', intfName2='r3-eth1')
