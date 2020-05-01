@@ -112,7 +112,7 @@ class Graph:
         import os
         import pathlib
 
-        absFilePath = os.path.abspath(__file__)
+        #absFilePath = os.path.abspath(__file__)
        # print(absFilePath)
         fileDir = os.path.dirname(os.path.abspath(__file__))
     
@@ -120,6 +120,8 @@ class Graph:
        # print(writepath)
     
         mode = 'a' if os.path.exists(writepath) else 'w'
+        if(mode=='a'):
+            return
         with open(writepath, mode) as f:
             f.write('->'.join(graph.dijkstra(src, destination)))
         f.close()
