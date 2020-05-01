@@ -107,28 +107,25 @@ class Graph:
             if path:
                 path.appendleft(current_vertex)
             return path
- 
+
+    def test(self,src,destination):
+        import os
+        import pathlib
+
+        absFilePath = os.path.abspath(__file__)
+        print(absFilePath)
+        fileDir = os.path.dirname(os.path.abspath(__file__))
+    
+        writepath = fileDir+'/'+src+'_'+destination+'.txt'
+        print(writepath)
+    
+        mode = 'a' if os.path.exists(writepath) else 'w'
+        with open(writepath, mode) as f:
+            f.write('->'.join(graph.dijkstra(src, destination)))
+        f.close()
+    
     #Sample graph, must find way to create topology as graph
 
-graph = Graph([("a", "b", 7),  ("a", "c", 9),  ("a", "f", 14), ("b", "c", 10),("b", "d", 15), ("c", "d", 11), ("c", "f", 2),  ("d", "e", 6),("e", "f", 9)])
-#print(graph.dijkstra("a", "c"), file=open("a_c.txt", "w"))
-
-import os
-import pathlib
-pa = pathlib.Path().absolute()
-
-absFilePath = os.path.abspath(__file__)
-print(absFilePath)
-fileDir = os.path.dirname(os.path.abspath(__file__))
-
-
-
-
-writepath = fileDir+'/file1.txt'
-
-mode = 'a' if os.path.exists(writepath) else 'w'
-with open(writepath, mode) as f:
-    f.write(''.join(graph.dijkstra("a", "c")))
-f.close()
-
-print(graph.dijkstra("a", "c"))
+if __name__== "__main__":
+    graph = Graph([("a", "b", 7),  ("a", "c", 9),  ("a", "f", 14), ("b", "c", 10),("b", "d", 15), ("c", "d", 11), ("c", "f", 2),  ("d", "e", 6),("e", "f", 9)])
+    graph.test("a","d")
