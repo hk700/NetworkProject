@@ -113,11 +113,11 @@ class Graph:
         import pathlib
 
         absFilePath = os.path.abspath(__file__)
-        print(absFilePath)
+       # print(absFilePath)
         fileDir = os.path.dirname(os.path.abspath(__file__))
     
-        writepath = fileDir+'/'+src+'_'+destination+'.txt'
-        print(writepath)
+        writepath = fileDir+'/'+'graphs'+'/'+src+'_'+destination+'.txt'
+       # print(writepath)
     
         mode = 'a' if os.path.exists(writepath) else 'w'
         with open(writepath, mode) as f:
@@ -128,4 +128,30 @@ class Graph:
 
 if __name__== "__main__":
     graph = Graph([("a", "b", 7),  ("a", "c", 9),  ("a", "f", 14), ("b", "c", 10),("b", "d", 15), ("c", "d", 11), ("c", "f", 2),  ("d", "e", 6),("e", "f", 9)])
+    graph.test("a","b")
+    graph.test("a","c")
+    graph.test("a","d")
     graph.test("a","e")
+    graph.test("a","f")
+
+    graph.test("b","c")
+    graph.test("b","d")
+    graph.test("b","e")
+    graph.test("b","f")
+
+
+    graph.test("c","d")
+    graph.test("c","e")
+    graph.test("c","f")
+
+    graph.test("d","e")
+    graph.test("d","f")
+
+
+
+    graph.test("e","f")
+
+
+
+
+

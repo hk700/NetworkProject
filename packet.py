@@ -11,7 +11,7 @@ import numpy as np
 import os
 def read(src,dest):
     fileDir = os.path.dirname(os.path.abspath(__file__))
-    f = open(fileDir+'/'+src+"_"+dest+".txt", "r")
+    f = open(fileDir+'/'+'graphs'+'/'+src+"_"+dest+".txt", "r")
     re= f.readline()
     print(re)
    # new_str = re.replace('->', '') 
