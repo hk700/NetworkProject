@@ -60,7 +60,7 @@ class Graph:
 
         return neighbours
 
-    def dijkstra(self, source, dest):
+    def dijkstra(self, source, dest, k, dest2, dest3):
             assert source in self.vertices, 'Such source node doesn\'t exist'
 
             # 1. Mark all nodes unvisited and store them.
