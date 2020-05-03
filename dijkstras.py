@@ -1,6 +1,6 @@
 from collections import deque, namedtuple
 
-
+import os
 
 # we'll use infinity as a default distance to nodes.
 inf = float('inf')
@@ -127,31 +127,65 @@ class Graph:
         f.close()
     
     #Sample graph, must find way to create topology as graph
+    def read(self,src,dest):
+        fileDir = os.path.dirname(os.path.abspath(__file__))
+        f = open(fileDir+'/'+'graphs'+'/'+src+"_"+dest+".txt", "r")
+        re= f.readline()
+        print(re)
+    # new_str = re.replace('->', '') 
+        array = re.split("->")
+    
+        str1 = ''.join(array)
+        dict={"ab":7,"ba":7, "ac":9,"ca":9, "af":14,"fa":14, "bc":10,"cb":10,"bd":15,"db":15, "cd":11,"dc":11, "cf":2,"fc":2,  "de": 6,"ed": 6}
+        sum =0
+        for i in range(0, len(str1)-1):
+            d=dict.get(str1[i]+str1[i+1])
+            sum=sum+d
+          
+    
+ 
+
+        return sum
 
 if __name__== "__main__":
-    graph = Graph([("a", "b", 7),  ("a", "c", 9),  ("a", "f", 14), ("b", "c", 10),("b", "d", 15), ("c", "d", 11), ("c", "f", 2),  ("d", "e", 6),("e", "f", 9)])
+    graph = Graph([("a", "b", 7),("b", "a", 7), ("a", "c", 9),("c", "a", 9),  ("a", "f", 14),("f", "a", 14), ("b", "c", 10),("c", "b", 10),("b", "d", 15), ("d", "b", 15),("c", "d", 11),("d", "c", 11), ("c", "f", 2), ("f", "c", 2), ("d", "e", 6), ("e", "d", 6)])
+
+    print(graph.read("a","e"))
+
+
+    
     graph.test("a","b")
     graph.test("a","c")
     graph.test("a","d")
     graph.test("a","e")
     graph.test("a","f")
 
+    graph.test("b","a")
     graph.test("b","c")
     graph.test("b","d")
     graph.test("b","e")
     graph.test("b","f")
 
-
+    graph.test("c","a")
+    graph.test("c","b")
     graph.test("c","d")
     graph.test("c","e")
     graph.test("c","f")
 
+
+    graph.test("d","a")
+    graph.test("d","b")
+    graph.test("d","c")
     graph.test("d","e")
     graph.test("d","f")
 
 
-
+    graph.test("e","a")
+    graph.test("e","b")
+    graph.test("e","c")
+    graph.test("e","d")
     graph.test("e","f")
+
 
 
 
