@@ -120,7 +120,8 @@ class Graph:
         writepath = fileDir+'/'+'graphs'+'/'+src+'_'+destination+'.txt'
        # print(writepath)
         
-        mode = 'w'   
+        mode = 'w'
+        path, cost =graph.dijkstra(src,destination)
        
         with open(writepath, mode) as f:
             f.write('->'.join(path))# create/overwrite a txt file and print the shortest path
