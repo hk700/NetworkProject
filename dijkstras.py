@@ -100,13 +100,14 @@ class Graph:
                 vertices.remove(current_vertex)
 
 
+            final_cost=distances[neighbour]
             path, current_vertex = deque(), dest
             while previous_vertices[current_vertex] is not None:
                 path.appendleft(current_vertex)
                 current_vertex = previous_vertices[current_vertex]
             if path:
                 path.appendleft(current_vertex)
-            return path
+            return path, final_cost
 
     def test(self,src,destination):
         import os
@@ -118,12 +119,14 @@ class Graph:
     
         writepath = fileDir+'/'+'graphs'+'/'+src+'_'+destination+'.txt'
        # print(writepath)
-    
-        mode = 'a' if os.path.exists(writepath) else 'w'
-        if(mode=='a'):
-            return
+        
+        mode = 'w'
+        path, cost =graph.dijkstra(src,destination)
+       
         with open(writepath, mode) as f:
-            f.write('->'.join(graph.dijkstra(src, destination)))
+            f.write('->'.join(path))# create/overwrite a txt file and print the shortest path
+            f.write("\nTotal cost to the destination " + str(cost))# print the total cost to the destination
+            
         f.close()
     
     #Sample graph, must find way to create topology as graph
