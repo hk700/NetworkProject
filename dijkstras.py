@@ -100,13 +100,14 @@ class Graph:
                 vertices.remove(current_vertex)
 
 
+            final_cost=distances[neighbour]
             path, current_vertex = deque(), dest
             while previous_vertices[current_vertex] is not None:
                 path.appendleft(current_vertex)
                 current_vertex = previous_vertices[current_vertex]
             if path:
                 path.appendleft(current_vertex)
-            return path
+            return path, final_cost
 
     def test(self,src,destination):
         import os
