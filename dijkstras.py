@@ -60,7 +60,7 @@ class Graph:
 
         return neighbours
 
-    def dijkstra(self, source, dest, k):
+    def dijkstra(self, source, dest):
             assert source in self.vertices, 'Such source node doesn\'t exist'
 
             # 1. Mark all nodes unvisited and store them.
@@ -118,12 +118,13 @@ class Graph:
     
         writepath = fileDir+'/'+'graphs'+'/'+src+'_'+destination+'.txt'
        # print(writepath)
-    
-        mode = 'a' if os.path.exists(writepath) else 'w'
-        if(mode=='a'):
-            return
+        
+        mode = 'w'   
+       
         with open(writepath, mode) as f:
-            f.write('->'.join(graph.dijkstra(src, destination)))
+            f.write('->'.join(path))# create/overwrite a txt file and print the shortest path
+            f.write("\nTotal cost to the destination " + str(cost))# print the total cost to the destination
+            
         f.close()
     
     #Sample graph, must find way to create topology as graph
