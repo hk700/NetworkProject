@@ -1,1 +1,2 @@
 a->c->f
+Total cost to the destination 20

@@ -1,1 +1,2 @@
 c->b
+Total cost to the destination 11

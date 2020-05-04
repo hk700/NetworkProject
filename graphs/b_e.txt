@@ -1,1 +1,2 @@
 b->d->e
+Total cost to the destination 15
