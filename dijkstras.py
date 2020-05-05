@@ -1,6 +1,6 @@
 from collections import deque, namedtuple
 
-import os
+
 
 # we'll use infinity as a default distance to nodes.
 inf = float('inf')
@@ -26,6 +26,7 @@ class Graph:
             sum(
                 ([edge.start, edge.end] for edge in self.edges), []
             )
+            
         )
 
     def get_node_pairs(self, n1, n2, both_ends=True):
@@ -67,6 +68,7 @@ class Graph:
             # 2. Set the distance to zero for our initial node
             # and to infinity for other nodes.
             distances = {vertex: inf for vertex in self.vertices}
+            
             previous_vertices = {
                 vertex: None for vertex in self.vertices
             }
@@ -94,23 +96,31 @@ class Graph:
                     if alternative_route < distances[neighbour]:
                         distances[neighbour] = alternative_route
                         previous_vertices[neighbour] = current_vertex
+                        
+                        
+                
+                        
 
                 # 5. Mark the current node as visited
                 # and remove it from the unvisited set.
                 vertices.remove(current_vertex)
+            
+            
 
-
+            final_cost=distances[dest]
             path, current_vertex = deque(), dest
             while previous_vertices[current_vertex] is not None:
                 path.appendleft(current_vertex)
                 current_vertex = previous_vertices[current_vertex]
+                
             if path:
                 path.appendleft(current_vertex)
-            return path
+            return path, final_cost
 
     def test(self,src,destination):
         import os
         import pathlib
+    
 
         #absFilePath = os.path.abspath(__file__)
        # print(absFilePath)
@@ -118,74 +128,25 @@ class Graph:
     
         writepath = fileDir+'/'+'graphs'+'/'+src+'_'+destination+'.txt'
        # print(writepath)
+        path, cost = graph.dijkstra(src,destination)
+        print(path)
+        print(cost)
     
-        mode = 'a' if os.path.exists(writepath) else 'w'
-        if(mode=='a'):
-            return
+        mode = 'w'
+        
         with open(writepath, mode) as f:
-            f.write('->'.join(graph.dijkstra(src, destination)))
+            f.write('->'.join(path))# create/overwrite a txt file and print the shortest path
+            f.write("\nTotal cost to the destination " + str(cost))# print the total cost to the destination
+            
         f.close()
     
     #Sample graph, must find way to create topology as graph
-    def read(self,src,dest):
-        fileDir = os.path.dirname(os.path.abspath(__file__))
-        f = open(fileDir+'/'+'graphs'+'/'+src+"_"+dest+".txt", "r")
-        re= f.readline()
-        print(re)
-    # new_str = re.replace('->', '') 
-        array = re.split("->")
-    
-        str1 = ''.join(array)
-        dict={"ab":7,"ba":7, "ac":9,"ca":9, "af":14,"fa":14, "bc":10,"cb":10,"bd":15,"db":15, "cd":11,"dc":11, "cf":2,"fc":2,  "de": 6,"ed": 6}
-        sum =0
-        str1 = str1.rstrip(' \t\r\n\0')
-        for i in range(0, len(str1)-1):
-            d=dict.get(str1[i]+str1[i+1])
-            sum=sum+d
-          
-    
- 
-
-        return sum
 
 if __name__== "__main__":
-    graph = Graph([("a", "b", 7),("b", "a", 7), ("a", "c", 9),("c", "a", 9),  ("a", "f", 14),("f", "a", 14), ("b", "c", 10),("c", "b", 10),("b", "d", 15), ("d", "b", 15),("c", "d", 11),("d", "c", 11), ("c", "f", 2), ("f", "c", 2), ("d", "e", 6), ("e", "d", 6)])
+    graph = Graph([("s1", "r1", 1),("r1", "r2", 1), ("r2", "r4", 1), ("r4", "r7", 1),("r7", "d1", 1), ("r2", "r3", 1), ("r1", "r3",1), ("r3", "r5", 1), ("r3", "r6", 1),  ("r5", "d2", 1), ("r6", "d3", 1)])
 
-   
-    graph.test("a","b")
-    graph.test("a","c")
-    graph.test("a","d")
-    graph.test("a","e")
-    graph.test("a","f")
-
-    graph.test("b","a")
-    graph.test("b","c")
-    graph.test("b","d")
-    graph.test("b","e")
-    graph.test("b","f")
-
-    graph.test("c","a")
-    graph.test("c","b")
-    graph.test("c","d")
-    graph.test("c","e")
-    graph.test("c","f")
-
-
-    graph.test("d","a")
-    graph.test("d","b")
-    graph.test("d","c")
-    graph.test("d","e")
-    graph.test("d","f")
-
-
-    graph.test("e","a")
-    graph.test("e","b")
-    graph.test("e","c")
-    graph.test("e","d")
-    graph.test("e","f")
-
-    print(graph.read("a","e"))
-
-
-
-
+    
+    graph.test("s1","d3")
+    graph.test("s1","d1")
+    graph.test("s1","d2")
+    graph.test("r3","d3")
