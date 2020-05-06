@@ -1,5 +1,21 @@
 from collections import deque, namedtuple
+from nodes import Nodes
 
+def makeNode(ip,id,port):
+    n = Nodes(ip,id,port)
+    return n
+
+s1 =makeNode("192.168.1.1","s1",8881)
+r1 =makeNode(("192.168.1.2","10.0.1.0","10.0.2.0"),"r1",8882)
+r2 =makeNode(("10.0.1.1","10.0.3.1","10.0.4.1"),"r2",8883)
+r3 =makeNode(("10.0.2.1","10.0.3.2","10.0.5.1","10.0.6.1"),"r3",8884)
+r4 =makeNode(("10.0.4.2","10.0.7.1"),"r4",8885)
+r5 =makeNode(("10.0.5.2","192.168.3.2"),"r5",8886)
+r6 =makeNode(("10.0.6.2","192.168.4.2"),"r6",8887)
+r7 =makeNode(("10.0.7.2","192.168.2.2"),"r7",8888)
+d1 =makeNode("192.168.2.1","d1",8889)
+d2 =makeNode("192.168.3.1","d2",8890)
+d3 =makeNode("192.168.4.1","d3",8891)
 
 
 # we'll use infinity as a default distance to nodes.
@@ -144,7 +160,6 @@ class Graph:
 
 if __name__== "__main__":
     graph = Graph([("s1", "r1", 1),("r1", "r2", 1), ("r2", "r4", 1), ("r4", "r7", 1),("r7", "d1", 1), ("r2", "r3", 1), ("r1", "r3",1), ("r3", "r5", 1), ("r3", "r6", 1),  ("r5", "d2", 1), ("r6", "d3", 1)])
-
     
     graph.test("s1","d3")
     graph.test("s1","d1")

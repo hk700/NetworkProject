@@ -1,2 +1,2 @@
 e->d->c->f
-Total cost to the destination 19
+Total cost to the destination 21
