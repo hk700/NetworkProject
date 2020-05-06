@@ -1,7 +1,7 @@
 from socket import socket, AF_INET, SOCK_DGRAM
 from packet import *
 from threading import Thread
-
+from variables import * # imports all the variables for the network
 #Creates new router
 class udprouter():
 
@@ -44,5 +44,6 @@ class udprouter():
 
 if __name__ == '__main__':
         print("Router Started...")
-        udp_router = udprouter(id=206, port=8886)
+        
+        udp_router = udprouter(r6.id,r5.port)
         udp_router.handle_packets()

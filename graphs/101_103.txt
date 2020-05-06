@@ -1,0 +1,2 @@
+101->201->203->205->103
+Total cost to the destination 4

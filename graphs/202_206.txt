@@ -1,0 +1,2 @@
+202->203->206
+Total cost to the destination 2

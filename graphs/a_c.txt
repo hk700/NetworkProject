@@ -1,2 +1,0 @@
-a->c
-Total cost to the destination 20

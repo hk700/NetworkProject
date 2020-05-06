@@ -1,2 +1,0 @@
-e->d->b
-Total cost to the destination 21

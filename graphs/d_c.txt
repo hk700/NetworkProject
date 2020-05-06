@@ -1,2 +1,0 @@
-d->c
-Total cost to the destination 15

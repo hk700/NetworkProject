@@ -9,7 +9,8 @@ import random
 import asyncore
 import numpy as np
 import os
-
+from variables import * # imports all the variables for the network
+'''
 from nodes import Nodes
 
 def makeNode(ip,id,port):
@@ -28,7 +29,7 @@ r7 =makeNode(("10.0.7.2","192.168.2.2"),"r7",8888)
 d1 =makeNode("192.168.2.1","d1",8889)
 d2 =makeNode("192.168.3.1","d2",8890)
 d3 =makeNode("192.168.4.1","d3",8891)
-
+'''
 def read(src,dest):
     fileDir = os.path.dirname(os.path.abspath(__file__))
     f = open(fileDir+'/'+'graphs'+'/'+src+"_"+dest+".txt", "r")
@@ -137,4 +138,4 @@ def receive_packet(h, sent_packet):
 
 
 
-read("a","d")
+
