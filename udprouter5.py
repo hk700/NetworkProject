@@ -10,14 +10,14 @@ class udprouter():
                 self.port = port
                 self.id = id
                 self.rt = { 'routes': [{'id': 203, 'ip': '10.0.5.1', 'gateway': '10.0.5.2', 'port':8883},
-                {'id': 103, 'ip': '192.168.3.1', 'gateway': '192.168.3.2', 'port':8889}] }
+                {'id': 206, 'ip': '10.0.6.2', 'gateway': '10.0.6.1', 'port':8886}] }
 
         # Using the dst received in packet finds the corresponding dst address
         def search_dst_addr(self, dst):
                 for x in range(len(self.rt['routes'])):
                         if self.rt['routes'][x]['id'] == dst:
                                 return (self.rt['routes'][x]['ip'], self.rt['routes'][x]['port'])
-                return ('192.168.3.1', 8889)
+                return ('10.0.6.2', 8886)
 
         # Sends packet to dst address
         def handle_sending(self, packet, server):
@@ -44,5 +44,5 @@ class udprouter():
 
 if __name__ == '__main__':
         print("Router Started...")
-        udp_router = udprouter(r5.id,r4.port)
+        udp_router = udprouter(205, 8885)
         udp_router.handle_packets()
