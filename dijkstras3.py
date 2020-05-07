@@ -150,7 +150,7 @@ if __name__== "__main__":
     # graph.test("s1","d3")
     # graph = Graph([(str(s1.id),str(r1.id),1)],(str(r1.id),str(r2.id),1))
     
-    graph= Graph([(s1.id,r1.id),(r1.id,r2.id),(r2.id,r4.id),(r4.id,r7.id),(r7.id,d1.id),(r2.id, r3.id), (r1.id, r3.id), (r3.id, r5.id), (r3.id, r6.id),  (r5.id, d2.id), (r6.id ,d3.id)])
+    graph= Graph([(s1.id,r1.id),(r1.id,r2.id),(r1.id,r3.id),(r3.id,r5.id),(r2.id,r4.id),(r4.id, d1.id), (r3.id, r4.id), (r5.id, r6.id), (r6.id, d2.id),  (r6.id, d3.id), (r6.id ,d3.id)])
     graph.test(s1.id,d1.id)
     graph.test(s1.id,d2.id)
     graph.test(s1.id,d3.id)
@@ -164,8 +164,6 @@ if __name__== "__main__":
     graph.test(r1.id,d1.id)
     graph.test(r1.id,d2.id)
     graph.test(r1.id,d3.id)
-
-
     graph.test(r2.id,r3.id)
     graph.test(r2.id,r4.id)
     graph.test(r2.id,r5.id)
