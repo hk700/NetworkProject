@@ -32,7 +32,7 @@ class projectTopo( Mininet ):
         self.addLink( r3, r4, intfName1='r3-eth1', intfName2='r4-eth1')
         self.addLink( r3, r5, intfName1='r3-eth2', intfName2='r5-eth0')
         self.addLink( r5, r6, intfName1='r5-eth1', intfName2='r6-eth0')
-        self.addLink( d1, r4, intfName2='r4-eth1')
+        self.addLink( d1, r4, intfName2='r4-eth2')
         self.addLink( d2, r6, intfName2='r6-eth1')
         self.addLink( d3, r6, intfName2='r6-eth2')
 
@@ -47,7 +47,6 @@ class projectTopo( Mininet ):
         router4 = self.get('r4')
         router5 = self.get('r5')
         router6 = self.get('r6')
-        router7 = self.get('r7')
         source.setIP('192.168.1.1/24', intf='s1-eth0')
         dest1.setIP('192.168.2.1/24', intf='d1-eth0')
         dest2.setIP('192.168.3.1/24', intf='d2-eth0')
