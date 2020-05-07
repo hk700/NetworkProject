@@ -75,7 +75,7 @@ def ping(h, c, dst):
     for x in range(c):
         #count += 1
         # Creates and sends the request packet 
-        packet = create_packet(1, h.id, dst, seq=seq_num, data='This is assignment 5!')
+        packet = create_packet(1, h.id, dst, seq=seq_num, data='This is the Project!')
         send_packet(h, packet)
         send_time = time.time()
 
