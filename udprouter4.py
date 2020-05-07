@@ -18,7 +18,7 @@ class udprouter():
                 for x in range(len(self.rt['routes'])):
                         if self.rt['routes'][x]['id'] == dst:
                                 return (self.rt['routes'][x]['ip'], self.rt['routes'][x]['port'])
-                return ('192.168.2.1'', 8888)
+                return ('192.168.2.1', 8888)
 
         # Sends packet to dst address
         def handle_sending(self, packet, server):
