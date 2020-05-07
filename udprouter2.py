@@ -10,14 +10,14 @@ class udprouter():
                 self.port = port
                 self.id = id
                 self.rt = { 'routes': [{'id': 201, 'ip': '10.0.1.0', 'gateway': '10.0.1.1', 'port':8881},
-                {'id': 204, 'ip': '10.0.4.2', 'gateway': '10.0.4.1', 'port':8883}] }
+                {'id': 204, 'ip': '10.0.3.2', 'gateway': '10.0.3.1', 'port':8883}] }
 
         # Using the dst received in packet finds the corresponding dst address
         def search_dst_addr(self, dst):
                 for x in range(len(self.rt['routes'])):
                         if self.rt['routes'][x]['id'] == dst:
                                 return (self.rt['routes'][x]['ip'], self.rt['routes'][x]['port'])
-                return ('10.0.4.2', 8884)
+                return ('10.0.3.2', 8884)
 
         # Sends packet to dst address
         def handle_sending(self, packet, server):
