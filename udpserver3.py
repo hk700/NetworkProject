@@ -13,5 +13,6 @@ class udpserver():
 #Initializes new server and sets it up to receive packets
 if __name__ == '__main__':
         print("Server Start...")
-        udp_server = udpserver(d3.id, d3.ip, gateway=(r6.ip,r5.port), port=d2.port)
+        udp_server = udpserver(id=104, ip='192.168.4.1', gateway=('192.168.4.2',8886), port=8890)
+        #udp_server = udpserver(d3.id, d3.ip, gateway=(r6.ip,r5.port), port=d2.port)
         receive_packet(udp_server, None)
