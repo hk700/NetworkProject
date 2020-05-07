@@ -3,12 +3,12 @@ from mininet.log import lg, info
 from mininet.cli import CLI
 from mininet.node import Node
 from mininet.link import TCLink
-
+from cleanup import cleanup
 
 class projectTopo( Mininet ):
 
     def __init__(self):
-        Mininet.__init__(self, link=TCLink, controller=None)
+        Mininet.__init__(self, link=TCLink, controller=None, cleanup=True)
 
         #Creating Hosts
         info( "Creating nodes\n" )
@@ -93,4 +93,4 @@ class projectTopo( Mininet ):
 if __name__ == '__main__':
     topo = projectTopo()
     topo.start_network()
-
+    cleanup()
