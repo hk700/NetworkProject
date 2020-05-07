@@ -22,10 +22,7 @@ class udprouter():
                 for x in range(len(self.rt['routes'])):
                         if self.rt['routes'][x]['id'] == dst:
                                 return (self.rt['routes'][x]['ip'], self.rt['routes'][x]['port'])
-                if dst == 102:
-                        return ('10.0.1.1', 8882)
-                else:
-                        return ('10.0.2.1', 8883)
+                return ('10.0.2.1', 8883)
 
         # Sends packet to dst address
         def handle_sending(self, packet, server):
@@ -52,6 +49,6 @@ class udprouter():
 
 if __name__ == '__main__':
         print("Router Started...")
-        udp_router = udprouter(r1.id, s1.port)
-        #udp_router = udprouter(id=201, port=8881)
+        #udp_router = udprouter(r1.id, s1.port)
+        udp_router = udprouter(id=201, port=8881)
         udp_router.handle_packets()
