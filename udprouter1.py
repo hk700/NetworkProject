@@ -24,7 +24,7 @@ class udprouter():
                                 return (self.rt['routes'][x]['ip'], self.rt['routes'][x]['port'])
                 if dst == 102:
                         return ('10.0.1.1', 8882)
-                else
+                else:
                         return ('10.0.2.1', 8883)
 
         # Sends packet to dst address
